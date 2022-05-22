@@ -36,6 +36,36 @@ services:
     networks:
       - back
 
+ # application 用のDB
+  mysql:
+    image: 'mysql/mysql-server:8.0'
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_ROOT_HOST: '%'
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+      MYSQL_ALLOW_EMPTY_PASSWORD: 1
+    volumes:
+      - './app/mysql:/var/lib/mysql'
+    healthcheck:
+      test: [ 'CMD', 'mysqladmin', 'ping', '-p${DB_PASSWORD}' ]
+      retries: 3
+      timeout: 5s
+    networks:
+      - app-db
+  phpmyadmin:
+    image: 'phpmyadmin/phpmyadmin'
+    ports:
+      - '11111:80'
+    environment:
+      PMA_HOST: 'mysql'
+      # PMA_PORT: '3306'
+    depends_on:
+      - mysql
+    networks:
+      - front
+      - app-db
+
 volumes:
   data:
   letsencrypt:
@@ -43,5 +73,7 @@ volumes:
 
 networks:
   front:
+    external: true
+  app-db:
     external: true
   back:
