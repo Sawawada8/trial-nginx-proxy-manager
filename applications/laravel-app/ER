@@ -1,0 +1,12 @@
+//// https://dbdiagram.io/d
+//// 上記URLにてこちらの記述を記載すればER図が表示されます。
+//// 記法 https://zenn.dev/ryo_kawamata/articles/introduce-ddbdiagram-io
+
+
+Table User {
+    id int [pk, increment]
+    name varchar
+    email varchar
+    password varchar
+}
+

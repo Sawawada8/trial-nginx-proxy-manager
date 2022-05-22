@@ -1,0 +1,2 @@
+#!/bin/bash
+docker run --rm -it $(PWD):/app --workdir /app composer:latest composer install
