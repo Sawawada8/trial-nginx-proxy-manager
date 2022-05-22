@@ -4,6 +4,7 @@
 cp .env.exapmle .env
 docker compose up -d
 sh/comp install
+sh/a key:generate
 ```
 ブラウザ表示後に key-generate
 
