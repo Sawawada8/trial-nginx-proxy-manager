@@ -3,8 +3,8 @@ version: "3"
 services:
   blog:
     image: nginx:latest
-    ports:
-      - 1002-1024:80
+    # ports:
+    #   - 1002-1024:80
     scale: 2
     networks:
       - front

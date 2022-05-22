@@ -55,8 +55,8 @@ services:
       - app-db
   phpmyadmin:
     image: 'phpmyadmin/phpmyadmin'
-    ports:
-      - '11111:80'
+    # ports:
+      # - '11111:80'
     environment:
       PMA_HOST: 'mysql'
       # PMA_PORT: '3306'
