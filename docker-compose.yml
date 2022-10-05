@@ -36,6 +36,18 @@ services:
     networks:
       - back
 
+  system-phpmyadmin:
+    image: 'phpmyadmin/phpmyadmin'
+    ports:
+      - '12111:80'
+    environment:
+      PMA_HOST: 'db'
+      PMA_PORT: '3306'
+    depends_on:
+      - db
+    networks:
+      - back
+
 volumes:
   data:
   letsencrypt:
